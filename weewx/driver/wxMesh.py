@@ -122,7 +122,7 @@ class wxMesh(weewx.drivers.AbstractDevice):
             data = self.receive_buffer.copy() # copy receive_buffer in data for packet building
             self.receive_buffer.clear() # clear receive_buffer to make it ready for any next incoming mqtt data
             if data:       # if data is not empty then prepare loop packet
-                _packet = {'dateTime': int(time.time() + 0.5),'usUnits': weewx.METRICWX}
+                _packet = {'dateTime': int(time.time() + 0.5),'usUnits': weewx.METRIC}
                 logdbg("dateTime %s" % _packet["dateTime"])
                 for vname in data:
                     _packet[self.label_map.get(vname, vname)] = _get_as_float(data, vname)
